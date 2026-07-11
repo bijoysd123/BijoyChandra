@@ -18,6 +18,15 @@
 
   --container: 1180px;
   --edge: clamp(20px, 5vw, 64px);
+
+  /* MODAL — এখানে বদলালে ভিডিও পপ-আপের লুক বদলে যাবে */
+  --modal-overlay: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(53,208,192,0.14), transparent 60%),
+                    radial-gradient(ellipse 70% 50% at 80% 80%, rgba(255,107,53,0.12), transparent 60%),
+                    rgba(10,11,13,0.86);
+  --modal-blur: 14px;
+  --modal-radius: 20px;
+  --modal-max-width: 960px;
+  --modal-width-vw: 88vw;
 }
 
 *{ box-sizing: border-box; margin:0; padding:0; }
@@ -518,7 +527,9 @@ button{ font-family: inherit; cursor: pointer; background:none; border:none; col
 .modal{
   position: fixed;
   inset: 0;
-  background: rgba(10,11,13,0.94);
+  background: var(--modal-overlay);
+  -webkit-backdrop-filter: blur(var(--modal-blur));
+  backdrop-filter: blur(var(--modal-blur));
   z-index: 500;
   display: flex;
   align-items: center;
@@ -526,19 +537,25 @@ button{ font-family: inherit; cursor: pointer; background:none; border:none; col
   padding: var(--edge);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.35s ease;
 }
 .modal.open{ opacity: 1; pointer-events: auto; }
 .modal-inner{
-  width: 100%;
-  max-width: 960px;
+  width: var(--modal-width-vw);
+  max-width: var(--modal-max-width);
   position: relative;
+  transform: scale(0.96);
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
 }
+.modal.open .modal-inner{ transform: scale(1); }
 .modal-video{
   position: relative;
   width: 100%;
   aspect-ratio: 16/9;
   background: var(--bg-panel);
+  border-radius: var(--modal-radius);
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.55), 0 0 0 1px var(--line);
 }
 .modal-video iframe{
   width: 100%; height: 100%; border: 0;
@@ -548,8 +565,14 @@ button{ font-family: inherit; cursor: pointer; background:none; border:none; col
   top: -44px; right: 0;
   font-size: 20px;
   color: var(--text-dim);
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
-.modal-close:hover{ color: var(--orange); }
+.modal-close:hover{ color: var(--orange); border-color: var(--orange); transform: rotate(90deg); }
 
 /* ============================================
    PLACEHOLDER THUMBS (gradient duotone, swappable)
