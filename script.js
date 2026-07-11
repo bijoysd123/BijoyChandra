@@ -15,7 +15,7 @@
    - colors       : থাম্বনেইলের গ্রেডিয়েন্ট রং (২টা hex কালার) — previewVideo না থাকা পর্যন্ত/লোড হওয়ার আগ পর্যন্ত এটা দেখাবে
    ============================================================ */
 const PROJECTS = [
-  { title: "Brand Reel — Aurora",      category: "Motion Graphics", youtubeId: "fRoOwRC-JiE", previewVideo: "", colors: ["#35D0C0", "#0A0B0D"] },
+  { title: "Brand Reel — Aurora",      category: "Motion Graphics", youtubeId: "fRoOwRC-JiE", previewVideo: "assets/previews/aurora.mp4", colors: ["#35D0C0", "#0A0B0D"] },
   { title: "Wedding Story — R & S",    category: "Video Edit",      youtubeId: "", previewVideo: "", colors: ["#FF6B35", "#0A0B0D"] },
   { title: "Product Launch — Nova",    category: "Motion Graphics", youtubeId: "", previewVideo: "", colors: ["#35D0C0", "#FF6B35"] },
   { title: "Title Sequence — Echo",    category: "Title Sequence",  youtubeId: "", previewVideo: "", colors: ["#8B8E94", "#0A0B0D"] },
