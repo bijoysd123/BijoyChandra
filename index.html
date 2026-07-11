@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REEL — Motion Graphics &amp; Video Editing Portfolio</title>
+<meta name="description" content="Motion graphics and video editing portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SIGNATURE ELEMENT: scroll-driven timeline scrubber -->
+<div class="scrubber" id="scrubber" aria-hidden="true">
+  <div class="scrubber-track">
+    <div class="scrubber-fill" id="scrubberFill"></div>
+    <div class="scrubber-playhead" id="scrubberPlayhead"></div>
+  </div>
+  <div class="scrubber-tc" id="scrubberTC">00:00:00:00</div>
+</div>
+
+<header class="site-header">
+  <a href="#top" class="logo">
+    <span class="logo-mark">▶</span>
+    <span class="logo-text">REEL<span class="logo-dot">.</span></span>
+  </a>
+  <nav class="main-nav" id="mainNav">
+    <a href="#work"><span class="nav-tc">01</span>WORK</a>
+    <a href="#toolkit"><span class="nav-tc">02</span>TOOLKIT</a>
+    <a href="#about"><span class="nav-tc">03</span>ABOUT</a>
+    <a href="#contact"><span class="nav-tc">04</span>CONTACT</a>
+  </nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="মেনু খুলুন" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-frame-info">
+      <span>SCENE 01</span><span>1920×1080</span><span>24 FPS</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="line">EDITING</span>
+      <span class="line hero-title-accent">MOTION</span>
+      <span class="line">& STORY</span>
+    </h1>
+    <p class="hero-sub">আমি ভিডিও এডিট আর মোশন গ্রাফিক্স দিয়ে গল্প বলি — কাট, কালার আর টাইমিং দিয়ে ফ্রেমকে অনুভূতিতে রূপ দিই।</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-primary">রিল দেখুন</a>
+      <a href="#contact" class="btn btn-ghost">যোগাযোগ করুন</a>
+    </div>
+  </section>
+
+  <!-- FEATURED FILMSTRIP -->
+  <section class="filmstrip-section" aria-label="Featured reel">
+    <div class="filmstrip-label">
+      <span class="tc">FEATURED REEL</span>
+    </div>
+    <div class="filmstrip" id="filmstrip">
+      <!-- filled by JS -->
+    </div>
+  </section>
+
+  <!-- WORK GRID -->
+  <section class="work" id="work">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>SELECTED WORK</h2>
+      <p class="section-note">থাম্বনেইলে ক্লিক করলে ভিডিও চালু হবে</p>
+    </div>
+    <div class="work-grid" id="workGrid">
+      <!-- filled by JS -->
+    </div>
+  </section>
+
+  <!-- TOOLKIT MARQUEE -->
+  <section class="toolkit" id="toolkit">
+    <div class="marquee">
+      <div class="marquee-track" id="marqueeTrack">
+        <!-- filled by JS, duplicated for loop -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>ABOUT</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p>আমি একজন মোশন গ্রাফিক্স ডিজাইনার ও ভিডিও এডিটর। কাঁচা ফুটেজকে টাইমলাইনে সাজিয়ে, কালার গ্রেড করে, আর মোশনে প্রাণ দিয়ে একটা গল্পে রূপ দেওয়াই আমার কাজ। ব্র্যান্ড ভিডিও, সোশ্যাল কনটেন্ট আর টাইটেল সিকোয়েন্স — সবকিছুতেই কাটের ছন্দ আর ডিটেইলের প্রতি মনোযোগ ধরে রাখি।</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <span class="stat-tc">00:14:22:08</span>
+          <span class="stat-label">রেন্ডার করা মোট ফুটেজ</span>
+        </div>
+        <div class="stat">
+          <span class="stat-tc">40+</span>
+          <span class="stat-label">সম্পন্ন প্রজেক্ট</span>
+        </div>
+        <div class="stat">
+          <span class="stat-tc">3+</span>
+          <span class="stat-label">বছরের অভিজ্ঞতা</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2>LET'S CUT SOMETHING TOGETHER</h2>
+    </div>
+    <a href="mailto:your@email.com" class="contact-email">your@email.com</a>
+    <div class="contact-socials">
+      <a href="#" target="_blank" rel="noopener">Instagram</a>
+      <a href="#" target="_blank" rel="noopener">Behance</a>
+      <a href="#" target="_blank" rel="noopener">YouTube</a>
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <span>© 2026 REEL</span>
+  <span class="footer-tc">END OF TIMELINE</span>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div class="modal" id="videoModal" aria-hidden="true">
+  <div class="modal-inner">
+    <button class="modal-close" id="modalClose" aria-label="বন্ধ করুন">✕</button>
+    <div class="modal-video" id="modalVideo"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
