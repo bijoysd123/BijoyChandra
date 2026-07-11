@@ -340,15 +340,15 @@ button{ font-family: inherit; cursor: pointer; background:none; border:none; col
 .work-grid{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--line);
+  gap: 18px;
 }
 .work-item{
-  background: var(--bg);
+  background: var(--bg-panel);
   position: relative;
   cursor: pointer;
-  aspect-ratio: 4/3;
+  aspect-ratio: 16/9;
   overflow: hidden;
+  border-radius: 14px;
 }
 .work-item-thumb{
   position: absolute; inset: 0;
