@@ -15,7 +15,7 @@
    - colors       : থাম্বনেইলের গ্রেডিয়েন্ট রং (২টা hex কালার) — previewVideo না থাকা পর্যন্ত/লোড হওয়ার আগ পর্যন্ত এটা দেখাবে
    ============================================================ */
 const PROJECTS = [
-  { title: "Brand Reel — Aurora",      category: "সাস প্রোডাক্ট ভিডিও", youtubeId: "KNxqAZfhnoE", previewVideo: "assets/previews/aurora.mp4", colors: ["#35D0C0", "#0A0B0D"] },
+  { title: "Brand Reel — Aurora",      category: "SaaS", youtubeId: "KNxqAZfhnoE", previewVideo: "assets/previews/aurora.mp4", colors: ["#35D0C0", "#0A0B0D"] },
   { title: "Wedding Story — R & S",    category: "ডকুমেন্টারি",         youtubeId: "", previewVideo: "", colors: ["#FF6B35", "#0A0B0D"] },
   { title: "Product Launch — Nova",    category: "সাস প্রোডাক্ট ভিডিও", youtubeId: "", previewVideo: "", colors: ["#35D0C0", "#FF6B35"] },
   { title: "Title Sequence — Echo",    category: "পিএসএল",              youtubeId: "", previewVideo: "", colors: ["#8B8E94", "#0A0B0D"] },
@@ -36,7 +36,7 @@ const FEATURED_INDEXES = [0, 2, 4, 5, 1];
    শুধু গ্রেডিয়েন্ট থাম্বনেইল দেখাবে।
    ============================================================ */
 const SHORTS = [
-  { title: "Reel — Neon Nights",     youtubeId: "", previewVideo: "", colors: ["#35D0C0", "#0A0B0D"] },
+  { title: "Reel — Neon Nights",     youtubeId: "XQLFRAT4AUs", previewVideo: "assets/previews/Tobacco For Geoscope.mp4", colors: ["#35D0C0", "#0A0B0D"] },
   { title: "Short — Studio BTS",     youtubeId: "", previewVideo: "", colors: ["#FF6B35", "#0A0B0D"] },
   { title: "Reel — Product Drop",    youtubeId: "", previewVideo: "", colors: ["#8B8E94", "#0A0B0D"] },
   { title: "Short — Street Style",   youtubeId: "", previewVideo: "", colors: ["#0A0B0D", "#35D0C0"] },
@@ -132,7 +132,7 @@ registerPreviewVideos(workGrid);
    ফিল্টার লিস্ট PROJECTS-এর category থেকে অটোমেটিক তৈরি হয়,
    "সব" সবসময় প্রথমে ও ডিফল্টভাবে সিলেক্ট থাকে।
    ============================================================ */
-const ALL_LABEL = 'সব';
+const ALL_LABEL = 'All';
 const workFiltersEl = document.getElementById('workFilters');
 const workItemEls = Array.from(workGrid.querySelectorAll('.work-item'));
 const categories = [ALL_LABEL, ...new Set(PROJECTS.map(p => p.category))];
