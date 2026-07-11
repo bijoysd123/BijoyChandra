@@ -11,7 +11,8 @@
    - colors     : থাম্বনেইলের গ্রেডিয়েন্ট রং (২টা hex কালার), ভিডিও/থাম্বনেইল ইমেজ যোগ না করা পর্যন্ত এটা ব্যবহার হবে
    ============================================================ */
 const PROJECTS = [
-  { title: "Brand Reel — Aurora",      category: "Motion Graphics", youtubeId: "", colors: ["#35D0C0", "#0A0B0D"] },
+  { title: "Brand Reel — Aurora",      category: "Motion Graphics", youtubeId: "fRoOwRC-JiE
+", colors: ["#35D0C0", "#0A0B0D"] },
   { title: "Wedding Story — R & S",    category: "Video Edit",      youtubeId: "", colors: ["#FF6B35", "#0A0B0D"] },
   { title: "Product Launch — Nova",    category: "Motion Graphics", youtubeId: "", colors: ["#35D0C0", "#FF6B35"] },
   { title: "Title Sequence — Echo",    category: "Title Sequence",  youtubeId: "", colors: ["#8B8E94", "#0A0B0D"] },
