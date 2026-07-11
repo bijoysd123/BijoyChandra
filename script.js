@@ -15,16 +15,33 @@
    - colors       : থাম্বনেইলের গ্রেডিয়েন্ট রং (২টা hex কালার) — previewVideo না থাকা পর্যন্ত/লোড হওয়ার আগ পর্যন্ত এটা দেখাবে
    ============================================================ */
 const PROJECTS = [
-  { title: "Brand Reel — Aurora",      category: "Motion Graphics", youtubeId: "KNxqAZfhnoE", previewVideo: "assets/previews/aurora.mp4", colors: ["#35D0C0", "#0A0B0D"] },
-  { title: "Wedding Story — R & S",    category: "Video Edit",      youtubeId: "", previewVideo: "", colors: ["#FF6B35", "#0A0B0D"] },
-  { title: "Product Launch — Nova",    category: "Motion Graphics", youtubeId: "", previewVideo: "", colors: ["#35D0C0", "#FF6B35"] },
-  { title: "Title Sequence — Echo",    category: "Title Sequence",  youtubeId: "", previewVideo: "", colors: ["#8B8E94", "#0A0B0D"] },
-  { title: "Travel Vlog — Coastline",  category: "Video Edit",      youtubeId: "", previewVideo: "", colors: ["#FF6B35", "#35D0C0"] },
-  { title: "Music Video — Lowlight",   category: "Motion Graphics", youtubeId: "", previewVideo: "", colors: ["#0A0B0D", "#35D0C0"] },
+  { title: "Brand Reel — Aurora",      category: "সাস প্রোডাক্ট ভিডিও", youtubeId: "KNxqAZfhnoE", previewVideo: "assets/previews/aurora.mp4", colors: ["#35D0C0", "#0A0B0D"] },
+  { title: "Wedding Story — R & S",    category: "ডকুমেন্টারি",         youtubeId: "", previewVideo: "", colors: ["#FF6B35", "#0A0B0D"] },
+  { title: "Product Launch — Nova",    category: "সাস প্রোডাক্ট ভিডিও", youtubeId: "", previewVideo: "", colors: ["#35D0C0", "#FF6B35"] },
+  { title: "Title Sequence — Echo",    category: "পিএসএল",              youtubeId: "", previewVideo: "", colors: ["#8B8E94", "#0A0B0D"] },
+  { title: "Travel Vlog — Coastline",  category: "ডকুমেন্টারি",         youtubeId: "", previewVideo: "", colors: ["#FF6B35", "#35D0C0"] },
+  { title: "Music Video — Lowlight",   category: "পিএসএল",              youtubeId: "", previewVideo: "", colors: ["#0A0B0D", "#35D0C0"] },
 ];
+/* ↑ category-টাই ফিল্টার বাটন বানায় (নিচে দেখুন) — নতুন প্রজেক্ট যোগ করার সময় যেকোনো category লিখলেই
+   সেটা অটোমেটিক ফিল্টার লিস্টে যোগ হয়ে যাবে, আলাদা করে কোথাও বসাতে হবে না। */
 
 /* ফিচারড রিল-এ কোন প্রজেক্টগুলো দেখাবে (ইনডেক্স অনুযায়ী, উপরের তালিকা থেকে) */
 const FEATURED_INDEXES = [0, 2, 4, 5, 1];
+
+/* ============================================================
+   SHORT FORM / REELS — ৯:১৬ (রিলস, ইউটিউব শর্ট)
+   ============================================================
+   ফিল্ড একই নিয়মে কাজ করে যেমন PROJECTS-এ (উপরে দেখুন)।
+   youtubeId খালি রাখলে ক্লিকে কিছু হবে না। previewVideo খালি রাখলে
+   শুধু গ্রেডিয়েন্ট থাম্বনেইল দেখাবে।
+   ============================================================ */
+const SHORTS = [
+  { title: "Reel — Neon Nights",     youtubeId: "", previewVideo: "", colors: ["#35D0C0", "#0A0B0D"] },
+  { title: "Short — Studio BTS",     youtubeId: "", previewVideo: "", colors: ["#FF6B35", "#0A0B0D"] },
+  { title: "Reel — Product Drop",    youtubeId: "", previewVideo: "", colors: ["#8B8E94", "#0A0B0D"] },
+  { title: "Short — Street Style",   youtubeId: "", previewVideo: "", colors: ["#0A0B0D", "#35D0C0"] },
+  { title: "Reel — Behind the Cut",  youtubeId: "", previewVideo: "", colors: ["#35D0C0", "#FF6B35"] },
+];
 
 /* ব্যবহৃত টুলস — চাইলে নাম বদলান/যোগ করুন */
 const TOOLS = ["After Effects", "Premiere Pro", "DaVinci Resolve", "Cinema 4D", "Photoshop", "Illustrator"];
@@ -94,6 +111,7 @@ const workGrid = document.getElementById('workGrid');
 PROJECTS.forEach((p, i) => {
   const el = document.createElement('div');
   el.className = 'work-item';
+  el.dataset.category = p.category;
   el.innerHTML = `
     <div class="work-item-thumb">${renderThumb(p)}</div>
     <span class="work-item-num">${String(i + 1).padStart(2, '0')}</span>
@@ -107,6 +125,52 @@ PROJECTS.forEach((p, i) => {
   workGrid.appendChild(el);
 });
 registerPreviewVideos(workGrid);
+
+/* ============================================================
+   RENDER + WIRE: WORK FILTERS
+   ============================================================
+   ফিল্টার লিস্ট PROJECTS-এর category থেকে অটোমেটিক তৈরি হয়,
+   "সব" সবসময় প্রথমে ও ডিফল্টভাবে সিলেক্ট থাকে।
+   ============================================================ */
+const ALL_LABEL = 'সব';
+const workFiltersEl = document.getElementById('workFilters');
+const workItemEls = Array.from(workGrid.querySelectorAll('.work-item'));
+const categories = [ALL_LABEL, ...new Set(PROJECTS.map(p => p.category))];
+
+categories.forEach((cat, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'filter-btn' + (i === 0 ? ' active' : '');
+  btn.type = 'button';
+  btn.textContent = cat;
+  btn.addEventListener('click', () => {
+    workFiltersEl.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    workItemEls.forEach(item => {
+      const show = cat === ALL_LABEL || item.dataset.category === cat;
+      item.classList.toggle('is-hidden', !show);
+    });
+  });
+  workFiltersEl.appendChild(btn);
+});
+
+/* ============================================================
+   RENDER: SHORT FORM / REELS (9:16)
+   ============================================================ */
+const shortsRow = document.getElementById('shortsRow');
+SHORTS.forEach(p => {
+  const el = document.createElement('div');
+  el.className = 'short-item';
+  el.innerHTML = `
+    <div class="short-item-thumb">${renderThumb(p)}</div>
+    <div class="play-icon">▶</div>
+    <div class="short-item-overlay">
+      <div class="short-item-title">${p.title}</div>
+    </div>
+  `;
+  el.addEventListener('click', () => openModal(p.youtubeId));
+  shortsRow.appendChild(el);
+});
+registerPreviewVideos(shortsRow);
 
 /* ============================================================
    RENDER: FEATURED FILMSTRIP

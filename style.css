@@ -337,6 +337,35 @@ button{ font-family: inherit; cursor: pointer; background:none; border:none; col
   margin-left: auto;
 }
 
+.work-filters{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 34px;
+}
+.filter-btn{
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  padding: 9px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.filter-btn:hover{ color: var(--text); border-color: var(--teal); }
+.filter-btn.active{
+  color: var(--bg);
+  background: var(--text);
+  border-color: var(--text);
+}
+.work-item{
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.work-item.is-hidden{
+  display: none;
+}
+
 .work-grid{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -403,6 +432,63 @@ button{ font-family: inherit; cursor: pointer; background:none; border:none; col
   backdrop-filter: blur(4px);
 }
 .work-item:hover .play-icon{ opacity: 1; transform: translate(-50%,-50%) scale(1); }
+
+/* ============================================
+   SHORT FORM / REELS (9:16)
+   ============================================ */
+.shorts{
+  padding: 0 var(--edge) 100px;
+}
+.shorts-row{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(46vw, 220px);
+  gap: 18px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+.shorts-row::-webkit-scrollbar{ height: 6px; }
+.shorts-row::-webkit-scrollbar-thumb{ background: var(--line); }
+
+.short-item{
+  position: relative;
+  aspect-ratio: 9/16;
+  background: var(--bg-panel);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.short-item-thumb{
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.6s cubic-bezier(.2,.8,.2,1), filter 0.4s ease;
+  filter: saturate(0.85);
+}
+.short-item:hover .short-item-thumb{
+  transform: scale(1.06);
+  filter: saturate(1.1);
+}
+.short-item-overlay{
+  position: absolute; inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px;
+  background: linear-gradient(to top, rgba(10,11,13,0.92) 0%, rgba(10,11,13,0.1) 45%, transparent 100%);
+}
+.short-item-title{
+  font-family: var(--display);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+.short-item .play-icon{
+  width: 38px; height: 38px;
+  font-size: 11px;
+}
 
 /* ============================================
    TOOLKIT MARQUEE
